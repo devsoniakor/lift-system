@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.cell.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PeopleController" 
+      alignment="center"  spacing="20" styleClass="root">
+    <stylesheets> <URL value="@style.css"/> </stylesheets>
+    
+    <HBox alignment ="TOP_LEFT" spacing="40">
+        <ImageView>
+            <image><Image url="@building.png"/></image>
+        </ImageView>
+        <VBox>
+            <Text styleClass="heading" text="Lift System" />
+            <Text styleClass="subheading" text="People" />
+        </VBox>
+    </HBox>
+    
+    <TableView fx:id="peopleTv" items="${controller.building.people}" prefWidth="400" prefHeight="200">
+	<placeholder><Label text=""/></placeholder>
+	<columns >
+            <TableColumn fx:id="idClm" text="ID" />
+            <TableColumn fx:id="nameClm" text="Name"  />
+            <TableColumn fx:id="levelClm" text="Level" />
+            <TableColumn fx:id="destinationClm" text="Destination"   />
+            <TableColumn fx:id="aboardClm" text="Aboard" />
+	</columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+    </TableView>
+    
+    <HBox alignment ="center" spacing="10">
+        <Button fx:id="closeBtn" text="Close" onAction="#handleClose"/>
+    </HBox>
+</VBox>

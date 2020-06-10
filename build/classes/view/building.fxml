@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+
+<VBox fx:controller="controller.BuildingController" 
+        xmlns:fx="http://javafx.com/fxml" alignment="center"  spacing="20" styleClass="root"
+        >
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+    <HBox alignment ="center" spacing="40">
+        <ImageView>
+            <image><Image url="@building.png"/></image>
+        </ImageView>
+        <VBox>
+            <Text styleClass="heading" text="Lift System" />
+            <Text styleClass="subheading" text="Building" />
+        </VBox>
+    </HBox>
+
+    <TableView fx:id="liftTv" items="${controller.building.lifts}" prefWidth="400" prefHeight="100"  >
+        
+	<columns>
+            <TableColumn fx:id="liftClm" text="Lift"  />
+            <TableColumn fx:id="levelClm" text="Level"   />
+            <TableColumn fx:id="directionClm" text="Direction"  />
+            <TableColumn fx:id="passengerClm" text="Passengers"  />
+            <TableColumn fx:id="waitingClm" text="Waiting"  />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         
+    </TableView>
+    
+    <HBox alignment="center" spacing="10" >
+	<Button fx:id="callLiftBtn" text="Call Lift" onAction="#handleCallLift"/>
+        <Button fx:id="viewLiftBtn" disable="true" text="View Lift" onAction="#handleViewLift"/>
+        <Button fx:id="peopleBtn" text="People" onAction="#handlePeople"/>
+        <Button fx:id="exitBtn" text="Exit" onAction="#handleExit"/>
+    </HBox>
+
+    <HBox alignment='center' spacing="5">
+        <Slider fx:id="delaySl" prefWidth="300" min="1" max="10" snapToTicks="true" majorTickUnit="1" minorTickCount="0" showTickMarks="true" showTickLabels="true"/>
+        <Text styleClass="time" text="Time:"/><Text styleClass="time" fx:id="timeTxt" />
+    </HBox>
+    
+</VBox>

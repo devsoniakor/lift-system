@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<?import view.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="center" spacing="20" styleClass="root" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="controller.LiftController">
+
+    <HBox alignment="TOP_LEFT" spacing="40">
+        <ImageView>
+            <image>
+                <Image url="@building.png" />
+            </image>
+        </ImageView>
+        <VBox>
+            <Text styleClass="heading" text="Lift System" />
+            <HBox alignment="TOP_LEFT" spacing="10">
+                <Text styleClass="subheading" text="Lift " />
+                <Text fx:id="liftNumber" styleClass="subheading" />
+            </HBox>
+        </VBox>
+    </HBox>
+    
+    <HBox styleClass="levelview" alignment="CENTER">
+        <LvView top="${controller.lift.top}" bottom="${controller.lift.bottom}" level="${controller.lift.level}"/>
+    </HBox>
+   
+    <GridPane alignment="CENTER" hgap="15" vgap="2">
+        <Label text="Current level:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Text fx:id="currentLvTxt" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Bottom level:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Text fx:id="bottomLvTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Top level:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Text fx:id="topLvTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text fx:id="directionTxt" styleClass="direction" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    </GridPane>
+    
+    <HBox alignment="center">
+        <VBox>
+            <Text text="Passengers" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <ListView fx:id="passengerLv" items="${controller.lift.passengers}" prefHeight="100" prefWidth="200">
+                <placeholder>
+                    <Label text="" />
+                </placeholder>
+            </ListView>
+        </VBox>
+        <VBox>
+            <Text text="Queue" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <ListView fx:id="queueLv" items="${controller.lift.queue}" prefHeight="100" prefWidth="200">
+                <placeholder>
+                    <Label text="" />
+                </placeholder>
+            </ListView>
+        </VBox>
+    </HBox>
+    <Button fx:id="exitBtn" onAction="#handleClose" text="Close" />
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+    
+</VBox>
